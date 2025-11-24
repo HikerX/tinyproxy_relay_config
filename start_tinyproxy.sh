@@ -9,8 +9,8 @@ done;
 
 read -p "select configuration: " index
 
-echo "bingo ${conf_files[$index]}"
-#tiny -d -c ""
+echo "using ${conf_files[$index]}"
+tinyproxy -d -c "${conf_files[$index]}"
 
 
 
