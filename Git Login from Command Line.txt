@@ -1,0 +1,67 @@
+echo "# tinyproxy_relay_config" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:HikerX/tinyproxy_relay_config.git
+git push -u origin main
+
+
+Git Login from Command Line
+
+Authenticating with Git from the command line is essential for pushing, pulling, or cloning repositories securely. Modern Git hosting services like GitHub, GitLab, and Bitbucket now require either Personal Access Tokens (PAT) or SSH keys instead of passwords.
+
+Using HTTPS with Personal Access Token (PAT)
+
+Step 1: Generate a PAT
+
+    Log in to your Git hosting service.
+
+    Navigate to Settings → Developer settings → Personal access tokens.
+
+    Generate a new token with the required scopes (e.g., repo).
+
+    Copy the token securely.
+
+Step 2: Clone or Push with PAT
+git clone https://github.com/username/repository.git
+
+When prompted for a password, paste your PAT instead of your account password.
+
+Step 3: Cache Credentials
+git config --global credential.helper cache
+
+This avoids re-entering credentials repeatedly.
+
+Using SSH Keys
+
+Step 1: Generate SSH Key Pair
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
+Press Enter to accept the default location.
+
+Step 2: Add Key to SSH Agent
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+
+Step 3: Add Public Key to Git Host
+cat ~/.ssh/id_rsa.pub
+
+Copy the output and add it under Settings → SSH and GPG keys in your Git hosting account.
+
+Step 4: Clone Using SSH
+git clone git@github.com:username/repository.git
+
+No username/password will be required for future operations.
+
+Best Practices
+
+    Use SSH keys for long-term secure access.
+
+    For HTTPS, prefer PATs over passwords as passwords are deprecated.
+
+    Regularly rotate tokens/keys and remove unused ones.
+
+    Use git credential-manager on Windows or macOS for secure storage.
+
+With these methods, you can log in to Git from the command line securely and efficiently.
